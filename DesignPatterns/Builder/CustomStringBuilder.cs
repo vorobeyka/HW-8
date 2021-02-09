@@ -17,6 +17,7 @@ namespace DesignPatterns.Builder
         public int Capacity { get; private set; }
         public int Length { get; private set; }
         public int MaxCapacity { get; }
+
         public CustomStringBuilder()
         {
             Capacity = 16;
@@ -40,6 +41,10 @@ namespace DesignPatterns.Builder
 
         private void ResizeCapacity(int len)
         {
+            if (len + Capacity > MaxCapacity)
+            {
+                throw new ArgumentOutOfRangeException(nameof(len), len, "enlarging the value of capacity");
+            }
             if (len > Capacity)
             {
                 Capacity *= 2;
@@ -51,10 +56,6 @@ namespace DesignPatterns.Builder
             Array.Resize(ref _data, Capacity);
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="Argument"></param>
         private void AddString(string str)
         {
             for (int i = 0; i < str.Length; i++)
