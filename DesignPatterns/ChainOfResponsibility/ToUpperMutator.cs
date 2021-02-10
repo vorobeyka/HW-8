@@ -1,26 +1,21 @@
+using System;
+
 namespace DesignPatterns.ChainOfResponsibility
 {
     public class ToUpperMutator : IStringMutator
     {
-        private IStringMutator _next = null;
+        private IStringMutator _next;
 
         public IStringMutator SetNext(IStringMutator next)
         {
             _next = next;
-            return this;
+            return next;
         }
 
         public string Mutate(string str)
         {
-            string mutable = str.ToUpper();
-            if (_next != null)
-            {
-                return _next.Mutate(mutable);
-            }
-            else
-            {
-                return mutable;
-            }
+            string mutated = str == null ? "" : str.ToUpper();
+            return _next == null ? mutated : _next.Mutate(mutated);
         }
     }
 }

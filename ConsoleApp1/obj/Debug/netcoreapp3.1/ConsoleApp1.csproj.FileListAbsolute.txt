@@ -1,0 +1,16 @@
+D:\Programming\pm\homeworks\hww-8\ConsoleApp1\bin\Debug\netcoreapp3.1\ConsoleApp1.exe
+D:\Programming\pm\homeworks\hww-8\ConsoleApp1\bin\Debug\netcoreapp3.1\ConsoleApp1.deps.json
+D:\Programming\pm\homeworks\hww-8\ConsoleApp1\bin\Debug\netcoreapp3.1\ConsoleApp1.runtimeconfig.json
+D:\Programming\pm\homeworks\hww-8\ConsoleApp1\bin\Debug\netcoreapp3.1\ConsoleApp1.runtimeconfig.dev.json
+D:\Programming\pm\homeworks\hww-8\ConsoleApp1\bin\Debug\netcoreapp3.1\ConsoleApp1.dll
+D:\Programming\pm\homeworks\hww-8\ConsoleApp1\bin\Debug\netcoreapp3.1\ConsoleApp1.pdb
+D:\Programming\pm\homeworks\hww-8\ConsoleApp1\bin\Debug\netcoreapp3.1\DesignPatterns.dll
+D:\Programming\pm\homeworks\hww-8\ConsoleApp1\bin\Debug\netcoreapp3.1\DesignPatterns.pdb
+D:\Programming\pm\homeworks\hww-8\ConsoleApp1\obj\Debug\netcoreapp3.1\ConsoleApp1.csprojAssemblyReference.cache
+D:\Programming\pm\homeworks\hww-8\ConsoleApp1\obj\Debug\netcoreapp3.1\ConsoleApp1.AssemblyInfoInputs.cache
+D:\Programming\pm\homeworks\hww-8\ConsoleApp1\obj\Debug\netcoreapp3.1\ConsoleApp1.AssemblyInfo.cs
+D:\Programming\pm\homeworks\hww-8\ConsoleApp1\obj\Debug\netcoreapp3.1\ConsoleApp1.csproj.CoreCompileInputs.cache
+D:\Programming\pm\homeworks\hww-8\ConsoleApp1\obj\Debug\netcoreapp3.1\ConsoleApp1.csproj.CopyComplete
+D:\Programming\pm\homeworks\hww-8\ConsoleApp1\obj\Debug\netcoreapp3.1\ConsoleApp1.dll
+D:\Programming\pm\homeworks\hww-8\ConsoleApp1\obj\Debug\netcoreapp3.1\ConsoleApp1.pdb
+D:\Programming\pm\homeworks\hww-8\ConsoleApp1\obj\Debug\netcoreapp3.1\ConsoleApp1.genruntimeconfig.cache

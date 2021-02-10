@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Diagnostics;
-using System.Text;
 using DesignPatterns.Builder;
 using DesignPatterns.ChainOfResponsibility;
+using DesignPatterns.IoC;
 
 namespace ConsoleApp1
 {
@@ -15,9 +14,12 @@ namespace ConsoleApp1
             IStringMutator stringMutator3 = new RemoveNumbersMutator();
             IStringMutator stringMutator4 = new TrimMutator();
 
-            IStringMutator sut = stringMutator1.SetNext(stringMutator2.SetNext(stringMutator3.SetNext(stringMutator4)));
+            stringMutator1
+                .SetNext(stringMutator2)
+                .SetNext(stringMutator3)
+                .SetNext(stringMutator4);
 
-            string actual = sut.Mutate("    SOME 1 input 2 String 3");
+            string actual = stringMutator1.Mutate("    SOME 1 input 2 String 3");
             Console.WriteLine(actual);
         }
     }

@@ -1,26 +1,21 @@
+using System;
+
 namespace DesignPatterns.ChainOfResponsibility
 {
     public class TrimMutator : IStringMutator
     {
-        private IStringMutator _next = null;
+        private IStringMutator _next;
 
         public IStringMutator SetNext(IStringMutator next)
         {
             _next = next;
-            return this;
+            return next;
         }
 
         public string Mutate(string str)
         {
-            var mutable = str.Trim();
-            if (_next != null)
-            {
-                return _next.Mutate(mutable);
-            }
-            else
-            {
-                return mutable;
-            }
+            var mutated = str == null ? "" : str.Trim();
+            return _next == null ? mutated : _next.Mutate(mutated);
         }
     }
 }
