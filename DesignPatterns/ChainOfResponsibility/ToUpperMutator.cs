@@ -2,14 +2,25 @@ namespace DesignPatterns.ChainOfResponsibility
 {
     public class ToUpperMutator : IStringMutator
     {
+        private IStringMutator _next = null;
+
         public IStringMutator SetNext(IStringMutator next)
         {
-            throw new System.NotImplementedException();
+            _next = next;
+            return this;
         }
 
         public string Mutate(string str)
         {
-            throw new System.NotImplementedException();
+            string mutable = str.ToUpper();
+            if (_next != null)
+            {
+                return _next.Mutate(mutable);
+            }
+            else
+            {
+                return mutable;
+            }
         }
     }
 }

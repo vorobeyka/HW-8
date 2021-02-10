@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Text;
 using DesignPatterns.Builder;
+using DesignPatterns.ChainOfResponsibility;
 
 namespace ConsoleApp1
 {
@@ -9,11 +10,15 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            var sb = new StringBuilder();
-            {
-                sb.Append("111111111111111111111111111");
-            }
-            Console.WriteLine(sb.Capacity);
+            IStringMutator stringMutator1 = new ToUpperMutator();
+            IStringMutator stringMutator2 = new InvertMutator();
+            IStringMutator stringMutator3 = new RemoveNumbersMutator();
+            IStringMutator stringMutator4 = new TrimMutator();
+
+            IStringMutator sut = stringMutator1.SetNext(stringMutator2.SetNext(stringMutator3.SetNext(stringMutator4)));
+
+            string actual = sut.Mutate("    SOME 1 input 2 String 3");
+            Console.WriteLine(actual);
         }
     }
 }
