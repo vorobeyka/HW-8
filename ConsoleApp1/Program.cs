@@ -9,18 +9,27 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            IStringMutator stringMutator1 = new ToUpperMutator();
-            IStringMutator stringMutator2 = new InvertMutator();
-            IStringMutator stringMutator3 = new RemoveNumbersMutator();
-            IStringMutator stringMutator4 = new TrimMutator();
+            some<ServiceCollection>();
+        }
 
-            stringMutator1
-                .SetNext(stringMutator2)
-                .SetNext(stringMutator3)
-                .SetNext(stringMutator4);
+        static void some<T>()
+        {
+            Console.WriteLine(typeof(T));
+            Type t = typeof(T);
+            Console.WriteLine($"{t.Name}");
+            Console.WriteLine($"{t.Assembly}");
+            Console.WriteLine($"{t.FullName}");
+            Console.WriteLine($"{t.Module}");
 
-            string actual = stringMutator1.Mutate("    SOME 1 input 2 String 3");
-            Console.WriteLine(actual);
+            //Console.WriteLine($"{t.GetFields()}");
+            foreach (var i in t.GetFields())
+            {
+                Console.WriteLine($"{i}");
+            }
+            Console.WriteLine($"{t.Name}");
+            Console.WriteLine($"{t.Name}");
+            Console.WriteLine($"{t.Name}");
+
         }
     }
 }

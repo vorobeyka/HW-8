@@ -1,12 +1,17 @@
 using System;
+using System.Collections.Generic;
 
 namespace DesignPatterns.IoC
 {
     public class ServiceCollection : IServiceCollection
     {
+        private List<Type> _singletons = new List<Type>();
+        private List<Type> _transients = new List<Type>();
+
         public IServiceCollection AddTransient<T>()
         {
-            throw new NotImplementedException();
+            _transients.Add(typeof(T));
+            return this;
         }
 
         public IServiceCollection AddTransient<T>(Func<T> factory)
@@ -21,7 +26,8 @@ namespace DesignPatterns.IoC
 
         public IServiceCollection AddSingleton<T>()
         {
-            throw new NotImplementedException();
+            _singletons.Add(typeof(T));
+            return this;
         }
 
         public IServiceCollection AddSingleton<T>(T service)
@@ -41,7 +47,7 @@ namespace DesignPatterns.IoC
 
         public IServiceProvider BuildServiceProvider()
         {
-            throw new NotImplementedException();
+            return new ServiceProvider(_transients, _singletons);
         }
     }
 }
