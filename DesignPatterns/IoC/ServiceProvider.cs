@@ -1,40 +1,47 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace DesignPatterns.IoC
 {
     class ServiceProvider : IServiceProvider
     {
-        private IEnumerable<Type> Transients { get; }
-        private IEnumerable<Type> Singletons { get; }
+        private readonly IDictionary<Type, object> _transients;
+        private readonly IDictionary<Type, object> _singletons;
 
-        private readonly IDictionary<Type, object> _existedSingletons = new Dictionary<Type, object>();
-
-        public ServiceProvider(IEnumerable<Type> transients, IEnumerable<Type> singletons)
+        public ServiceProvider(IDictionary<Type, object> singletons, IDictionary<Type, object> transients)
         {
-            Transients = transients;
-            Singletons = singletons;
+            _transients = transients;
+            _singletons = singletons;
         }
 
         public T GetService<T>()
         {
-            var isTransient = Transients.Any(transient => transient == typeof(T));
-            if (isTransient) return Activator.CreateInstance<T>();
+            var isTransient = _transients.ContainsKey(typeof(T));
+            if (isTransient) return GetTransient<T>();
 
-            var isSingletons = Singletons.Any(singleton => singleton == typeof(T));
-            if (!isSingletons) throw new Exception();
+            var isSingleton = _singletons.ContainsKey(typeof(T));
+            if (isSingleton) return GetSingleton<T>();
 
-            try
+            return default;
+        }
+
+        private T GetSingleton<T>()
+        {
+            if(_singletons[typeof(T)] == null)
             {
-                return (T)_existedSingletons[typeof(T)];
+                _singletons[typeof(T)] = Activator.CreateInstance<T>();
             }
-            catch (Exception)
+            return (T)_singletons[typeof(T)];
+        }
+
+        private T GetTransient<T>()
+        {
+            return (_transients[typeof(T)]) switch
             {
-                var singleton = Activator.CreateInstance<T>();
-                _existedSingletons.Add(typeof(T), singleton);
-                return singleton;
-            }
+                Func<T> func => func.Invoke(),
+                Func<IServiceProvider, T> func => func.Invoke(this),
+                _ => Activator.CreateInstance<T>(),
+            };
         }
     }
 }

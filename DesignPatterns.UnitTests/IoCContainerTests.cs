@@ -139,5 +139,17 @@ namespace DesignPatterns.UnitTests
             Assert.Equal(1, second.Counter);
             Assert.Equal(1, sing.Counter);
         }
+
+        [Fact]
+        public void NoServiceTest()
+        {
+            IServiceProvider serviceProvider = _services.BuildServiceProvider();
+
+            SomeSingleton singleton = serviceProvider.GetService<SomeSingleton>();
+            SomeSecondTransient someSecondTransient = serviceProvider.GetService<SomeSecondTransient>();
+
+            Assert.Null(singleton);
+            Assert.Null(someSecondTransient);
+        }
     }
 }

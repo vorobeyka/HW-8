@@ -1,9 +1,0 @@
-D:\Programming\pm\homeworks\hww-8\DesignPatterns\bin\Debug\netstandard2.1\DesignPatterns.deps.json
-D:\Programming\pm\homeworks\hww-8\DesignPatterns\bin\Debug\netstandard2.1\DesignPatterns.dll
-D:\Programming\pm\homeworks\hww-8\DesignPatterns\bin\Debug\netstandard2.1\DesignPatterns.pdb
-D:\Programming\pm\homeworks\hww-8\DesignPatterns\obj\Debug\netstandard2.1\DesignPatterns.csprojAssemblyReference.cache
-D:\Programming\pm\homeworks\hww-8\DesignPatterns\obj\Debug\netstandard2.1\DesignPatterns.AssemblyInfoInputs.cache
-D:\Programming\pm\homeworks\hww-8\DesignPatterns\obj\Debug\netstandard2.1\DesignPatterns.AssemblyInfo.cs
-D:\Programming\pm\homeworks\hww-8\DesignPatterns\obj\Debug\netstandard2.1\DesignPatterns.csproj.CoreCompileInputs.cache
-D:\Programming\pm\homeworks\hww-8\DesignPatterns\obj\Debug\netstandard2.1\DesignPatterns.dll
-D:\Programming\pm\homeworks\hww-8\DesignPatterns\obj\Debug\netstandard2.1\DesignPatterns.pdb
