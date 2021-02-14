@@ -16,11 +16,9 @@ namespace DesignPatterns.UnitTests
         [Fact]
         public void AddSingleton1Test()
         {
-            IServiceCollection services = new ServiceCollection();
+            _services.AddSingleton<SomeSingleton>();
 
-            services.AddSingleton<SomeSingleton>();
-
-            IServiceProvider provider = services.BuildServiceProvider();
+            IServiceProvider provider = _services.BuildServiceProvider();
 
             SomeSingleton first = provider.GetService<SomeSingleton>();
             SomeSingleton second = provider.GetService<SomeSingleton>();
@@ -63,7 +61,6 @@ namespace DesignPatterns.UnitTests
         [Fact]
         public void AddSingleton4Test()
         {
-
             _services.AddSingleton(provider => new SomeSingleton());
 
             IServiceProvider serviceProvider = _services.BuildServiceProvider();
@@ -79,7 +76,6 @@ namespace DesignPatterns.UnitTests
         [Fact]
         public void AddTransient1Test()
         {
-
             _services.AddTransient<SomeTransient>();
 
             IServiceProvider provider = _services.BuildServiceProvider();
