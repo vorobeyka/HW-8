@@ -10,25 +10,25 @@ namespace DesignPatterns.IoC
 
         public IServiceCollection AddTransient<T>()
         {
-            _transients.Add(typeof(T), null);
+            RegisterTransient<T>(default);
             return this;
         }
 
         public IServiceCollection AddTransient<T>(Func<T> factory)
         {
-            _transients.Add(typeof(T), factory);
+            RegisterTransient<T>(factory);
             return this;
         }
 
         public IServiceCollection AddTransient<T>(Func<IServiceProvider, T> factory)
         {
-            _transients.Add(typeof(T), factory);
+            RegisterTransient<T>(factory);
             return this;
         }
 
         public IServiceCollection AddSingleton<T>()
         {
-            _singletons.Add(typeof(T), null);
+            RegisterSingleton<T>(default);
             return this;
         }
 
@@ -67,6 +67,18 @@ namespace DesignPatterns.IoC
             else
             {
                 _singletons[typeof(T)] = singleton;
+            }
+        }
+
+        private void RegisterTransient<T>(object obj)
+        {
+            if (!_transients.ContainsKey(typeof(T)))
+            {
+                _transients.Add(typeof(T), obj);
+            }
+            else
+            {
+                _transients[typeof(T)] = obj;
             }
         }
 
